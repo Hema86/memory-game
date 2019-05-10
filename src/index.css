@@ -1,45 +1,64 @@
-* {
-  padding: 0;
-  margin: 0;
+html {
+  font-family: 'Rubik', sans-serif;
   box-sizing: border-box;
 }
-
-body {
+body{
   height: 100vh;
   display: flex;
   background: #060AB2;
+  align-items: center;
+  justify-content: center;
 }
-
 .Memory-game{
-  position: relative;
-  /* top:50%; */
-  left: 50%;
   width: 640px;
   height: 640px;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
+  perspective: 1000px;
 }
 
-.memory-card {
-  width: calc(25% - 10px);
-  height: calc(33.333% - 10px);
-  margin: 5px;
-  position: relative;
-  box-shadow: 1px 1px 1px rgba(0,0,0,.3);
-}
-
-.memory-card.flip {
+.card.active .flipper {
   transform: rotateY(180deg);
 }
-
-.front-face,
-.back-face {
-  width: 100%;
-  height: 100%;
+.card img {
+ position: relative;
+ top:30px;
+}
+.front, .back {
+  width: 110px;
+  height: 165px;
+  overflow: hidden;
   padding: 20px;
-  position: absolute;
+  margin: 5px;
+  position: relative;
   border-radius: 5px;
   background: #1C7CCC;
   backface-visibility: hidden;
+}
+
+.flipper {
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.front, .back {
+  text-align: center;
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.front {
+  transform: rotateY(0deg);
+  background: #1C7CCC;
+  position: relative;
+}
+
+.back {
+  transform: rotateY(180deg);
+  margin-top: 0;
+  padding-bottom: 20px;
 }
