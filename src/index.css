@@ -52,7 +52,7 @@ body{
 }
 
 .front {
-  transform: rotateY(0deg);
+  /* transform: rotateY(0deg); */
   background: #1C7CCC;
   position: relative;
 }
