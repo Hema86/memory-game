@@ -1,8 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import '../src/index.css'
+import Card from './card'
+const shuffle = require('lodash.shuffle')
 
-class App extends React.Component {
+class Memorygame extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -68,7 +70,7 @@ class App extends React.Component {
   componentWillMount () {
     var { items } = this.state
     this.setState({
-      items: items.concat(items.slice(0))
+      items: shuffle(items.concat(items.slice(0)))
     })
   }
 
@@ -92,21 +94,4 @@ class App extends React.Component {
   }
 }
 
-const Card = (props) => {
-  return (
-
-    <div className={`card ${props.active || props.matched ? 'active' : ''}`} onClick={props.handleClick.bind(this, props.index)}>
-      <div className='flipper'>
-        <div className='front'>
-          <img src='../img/js-badge.svg' alt='front' />
-        </div>
-        <div className='back' >
-          <img src={props.item.img} alt='back' />
-        </div>
-      </div>
-    </div>
-
-  )
-}
-
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(<Memorygame />, document.getElementById('root'))
